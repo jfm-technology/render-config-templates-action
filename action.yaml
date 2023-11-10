@@ -11,6 +11,10 @@ inputs:
     description: 'File extension of templates (default "production")'
     default: production
     required: false
+  remove-templates:
+    description: 'Remove template files once they have been processed?'
+    default: false
+    required: false
   vars:
     description: 'JSON string encoded map of variables for use in templates'
     default: '{}'
@@ -21,3 +25,4 @@ runs:
   args:
     - ${{ inputs.template-extension }}
     - ${{ inputs.relative-working-directory }}
+    - ${{ inputs.remove-templates }}
