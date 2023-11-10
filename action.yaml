@@ -20,5 +20,4 @@ runs:
   image: 'Dockerfile'
   args:
     - ${{ inputs.template-extension }}
-    - ${{ inputs.vars }}
     - ${{ inputs.relative-working-directory }}

@@ -1,11 +1,9 @@
 #!/bin/bash
 set -e
 
-env
-
 TEMPLATE_EXTENSION="$1"
-echo "$2" > /variables/vars.json
-if [[ -n $3 ]]; then
+echo "$INPUT_VARS" > /variables/vars.json
+if [[ -n $2 ]]; then
   cd "$3"
 fi
 
@@ -15,5 +13,6 @@ RC=0
 
 find -type f -name "*.${TEMPLATE_EXTENSION}" | \
 while read template; do
+  echo "::debug::Processing template file $template"
   jinja2 "$template" /variables/vars.json --format=json > "${template%.$TEMPLATE_EXTENSION}"
 done
