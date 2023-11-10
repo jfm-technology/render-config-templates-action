@@ -1,12 +1,11 @@
 #!/bin/bash
 set -e
 
-pwd
-ls -ls
-
-cd "$1"
-TEMPLATE_EXTENSION="$2"
-echo "$3" > /variables/vars.json
+TEMPLATE_EXTENSION="$1"
+echo "$2" > /variables/vars.json
+if [[ -n $3 ]]; then
+  cd "$3"
+fi
 
 ls -l /variables
 

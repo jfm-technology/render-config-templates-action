@@ -3,9 +3,9 @@ name: 'Render Config Files'
 description: 'Renders files from Jinja2 templates'
 author: 'rhl@jfm.dk'
 inputs:
-  working-directory:
-    description: 'The working directory to run the action in, any files under this directory matching the extension will be rendered.'
-    default: ${{ github.workspace }}
+  relative-working-directory:
+    description: 'The working directory to run the action in (relative to workspace).'
+    default: ''
     required: false
   template-extension:
     description: 'File extension of templates (default "production")'
@@ -19,6 +19,6 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ inputs.working-directory }}
     - ${{ inputs.template-extension }}
     - ${{ inputs.vars }}
+    - ${{ inputs.relative-working-directory }}
